@@ -4,11 +4,11 @@ Administración de BBDD NoSQL con Couchbase - CTA Zaragoza
 ADMINISTRACIÓN DE BASES DE DATOS NOSQL CON COUCHBASE
 ===================
 
-<i class="icon-building"></i> **Centro de Tecnologías Avanzadas de Zaragoza**
-<i class="icon-calendar"></i> **Del 24 al 17 de Noviembre 2016**
-<i class="icon-clock"></i> **De 17:00 a 21:17**
-<i class="icon-user"></i> **Agustín Calderón**
-<i class="icon-mail"></i> **[agustincl@gmail.com][1]**
+**Centro de Tecnologías Avanzadas de Zaragoza**
+**Del 24 al 17 de Noviembre 2016**
+**De 17:00 a 21:17**
+**Agustín Calderón**
+**[agustincl@gmail.com][1]**
 
 ---
 
