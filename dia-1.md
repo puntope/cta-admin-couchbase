@@ -19,18 +19,18 @@ Así mismo, trabaja la parte **operacional** de los datos, ofreciendo soluciones
 
 **Como desactivar Swap y Hugpages**
 
-    $ echo 0 > /proc/sys/vm/swappiness -> desactiva swap
+    $ echo 0 > /proc/sys/vm/swappiness #desactiva swap
 
-    $ echo “” >>/etc/sysctl.conf  -> vacio sysctl para que no reestablezca ram al reiniciar
+    $ echo “” >>/etc/sysctl.conf  #vacio sysctl para que no reestablezca ram al reiniciar
 
-    $ echo ‘vm.swappinnes = 0’ >> /etc/sysctl.conf -> desactiva swap
+    $ echo ‘vm.swappinnes = 0’ >> /etc/sysctl.conf #desactiva swap
 
-    $ echo never > /sys/kernel/mm/transarent_hugepage/enabled -> desactiva hugepage
+    $ echo never > /sys/kernel/mm/transarent_hugepage/enabled #desactiva hugepage
 
-    $ echo never > /sys/kernel/mm/transarent_hugepage/defrag -> desactiva hugepage
+    $ echo never > /sys/kernel/mm/transarent_hugepage/defrag #desactiva hugepage
     
 
 #### <i class="icon-cog"></i> Comandos CentOS utilizados
 
-    $ip a -> Muestra la configuración de red. Equivalente a ipconfig o ifconfig
-    $nmtui -> Lanza la herramienta de configación de red
+    $ ip a #Muestra la configuración de red. Equivalente a ipconfig o ifconfig
+    $ nmtui #Lanza la herramienta de configación de red
