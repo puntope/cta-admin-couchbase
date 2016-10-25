@@ -1,4 +1,4 @@
-Día 1 - 24 Octubre 2016
+Día 1 - 24 de Octubre 2016
 -------------
 
 Se habló sobre como el **Big Data** cubre necesidades de **velocidad, variedad y volumen**, debido a la inminente cantidad de datos que circulan por la red, con formatos indeterminados.
