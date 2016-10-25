@@ -1,14 +1,13 @@
 # cta-admin-couchbase
-Administración de BBDD NoSQL con Couchbase - CTA Zaragoza
 
 ADMINISTRACIÓN DE BASES DE DATOS NOSQL CON COUCHBASE
 ===================
 
-**Centro de Tecnologías Avanzadas de Zaragoza**
-**Del 24 al 17 de Noviembre 2016**
-**De 17:00 a 21:17**
-**Agustín Calderón**
-**[agustincl@gmail.com][1]**
+- **Centro de Tecnologías Avanzadas de Zaragoza**
+- **Del 24 al 17 de Noviembre 2016**
+- **De 17:00 a 21:17**
+- **Agustín Calderón**
+- **agustincl@gmail.com**
 
 ---
 
@@ -29,8 +28,8 @@ Así mismo, trabaja la parte **operacional** de los datos, ofreciendo soluciones
 
 > **Páginas visitadas:**
 
-> - [Shodan][2]
-> - [Twitter Pings][3]
+> - https://www.shodan.io/
+> - https://tweetping.net/
 
 #### <i class="icon-cog"></i> Instalación de Couchbase en CentOS
 
