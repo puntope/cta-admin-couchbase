@@ -1,0 +1,26 @@
+http://blog.couchbase.com/bulk-loading-documents-into-couchbase
+
+http://www.geoportalgasolineras.es/#/Descargas
+
+
+## Instalacion RUBY
+ruby -v
+yum install -y git-core zlib zlib-devel gcc-c++ patch readline readline-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison curl sqlite-devel
+yum install ruby
+ruby -v
+curl -O https://raw.githubusercontent.com/agonyou/cb-examples/master/CB_csv_streamloader/CB_SDK_streamloadjson.rb
+mv CB_SDK_streamloadjson.rb streamloadjson.rb
+
+sudo yum install ruby-rdoc ruby-devel
+sudo gem update
+sudo gem update –system
+sudo gem install rails
+gem install yajl-ruby
+gem install yaji
+gem install ruby-progressbar
+gem install couchbase
+ruby streamloadjson.rb -h
+
+
+
+
