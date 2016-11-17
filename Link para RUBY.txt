@@ -1,26 +1,164 @@
+## Links
+
+Link a herramienta ruby para importar JSON a Couchbase
 http://blog.couchbase.com/bulk-loading-documents-into-couchbase
 
+Link a la información oficial de gasolineras de españa
 http://www.geoportalgasolineras.es/#/Descargas
 
+## Configuración de network
+
+- Cambiar la IP
+nmtui
+
+#### Reiniciar el servicio de red
+service network restart
+service networking restart
+
+#### Cambiar el hostname
+hostname APP
+
+#### Cambiar el hostname de forma permannete
+ - editar /etc/hostname
+
+## Instalar Couchbase
+
+- Install couchbase
+```
+  echo 0 > /proc/sys/vm/swappiness
+  echo '' >> /etc/sysctl.conf
+  echo '#Set swappiness to 0 to avoid swapping' >> /etc/sysctl.conf
+  echo 'vm.swappiness = 0' >> /etc/sysctl.conf
+  echo never > /sys/kernel/mm/transparent_hugepage/enabled
+  echo never > /sys/kernel/mm/transparent_hugepage/defrag
+  yum install wget
+  wget http://packages.couchbase.com/releases/4.5.1/couchbase-server-enterprise-4.5.1-centos7.x86_64.rpm
+  sudo rpm --install couchbase-server-enterprise-4.5.1-centos7.x86_64.rpm
+  sudo /etc/init.d/couchbase-server status
+```
+
+## Configurar WEB GUI
+Abrir http://<IP>:8091
+
+## Instalar librerias del couchbase SKD
+
+- Edit repository file
+  vi /etc/yum.repos.d/couchbase.repo
+
+- Copy on file
+```
+  [couchbase]
+  enabled = 1
+  name = Couchbase package repository
+  baseurl = http://packages.couchbase.com/rpm/7/x86_64
+  gpgcheck = 1
+  gpgkey = http://packages.couchbase.com/rpm/couchbase-rpm.key
+```
+
+- Check updates
+ sudo yum check-update
+
+- Instalar librerias
+ yum install –y libcouchbase2-libevent libcouchbase-devel libcouchbase2-bin
+
+- Si no funciona wget, descargar librerias
+ http://developer.couchbase.com/documentation/server/4.1/sdks/c-2.4/download-list.html
+ tar xf libcouchbase-2.4.0_centos62_x86_64.tar
+ cd libcouchbase-2.4.0_centos62_x86_64/
+
+- Instalar librerias
+ sudo rpm -ivh libcouchbase-devel-2.4.0-1.el6.x86_64.rpm libcouchbase2-core-2.4.0-1.el6.x86_64.rpm libcouchbase2-bin-2.4.0-1.el6.x86_64.rpm libcouchbase2-libevent-2.4.0-1.el6.x86_64.rpm
+
+- Check Point
+  cbc-pillowfight -?
 
 ## Instalacion RUBY
-ruby -v
-yum install -y git-core zlib zlib-devel gcc-c++ patch readline readline-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison curl sqlite-devel
-yum install ruby
-ruby -v
-curl -O https://raw.githubusercontent.com/agonyou/cb-examples/master/CB_csv_streamloader/CB_SDK_streamloadjson.rb
-mv CB_SDK_streamloadjson.rb streamloadjson.rb
+- Check Point (ruby is NOT installed)
+  ruby -v
 
-sudo yum install ruby-rdoc ruby-devel
-sudo gem update
-sudo gem update �system
-sudo gem install rails
-gem install yajl-ruby
-gem install yaji
-gem install ruby-progressbar
-gem install couchbase
-ruby streamloadjson.rb -h
+- Instalar Ruby
+  sudo yum install gcc-c++ ruby ruby-devel rubygems
+  ruby -v
+  gem -v
+
+- Instalar gems
+  gem source -a http://rubygems.org/
+  gem install json_pure ruby-progressbar yajl-ruby
+  gem install couchbase
 
 
+- Download streamLoadJson tool
+  curl -o streamloadjson.rb https://raw.githubusercontent.com/agonyou/cb-examples/master/CB_csv_streamloader/CB_SDK_streamloadjson.rb
 
+- Check point
+  ruby streamloadjson.rb -h
 
+## Load Json to Bucket
+
+- Create EESS bucket in couchbase WEB GUI
+
+- Download EESS json
+  curl -o eess.json https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/
+
+- Load JSON to Bucket
+  ruby streamloadjson.rb -b EESS -f eess.json -n localhost -d IDEESS -r /ListaEESSPrecio/
+
+## Install Zend Server
+
+- vi /etc/yum.repos.d/zend.repo
+
+- Edit file
+```
+  [Zend]
+  name=Zend Server
+  baseurl=http://repos.zend.com/zend-server/9.0.1/rpm_apache2.4/$basearch
+  enabled=1
+  gpgcheck=1
+  gpgkey=http://repos.zend.com/zend.key
+
+  [Zend_noarch]
+  name=Zend Server - noarch
+  baseurl=http://repos.zend.com/zend-server/9.0.1/rpm_apache2.4/noarch
+  enabled=1
+  gpgcheck=1
+  gpgkey=http://repos.zend.com/zend.key
+```
+
+- Install Zend Server 7.0
+  yum install zend-server-php-7.0
+
+## Install python
+
+- Download couchbase release
+ wget http://packages.couchbase.com/releases/couchbase-release/couchbase-release-1.0-2-x86_64.rpm
+
+- Install couchbase release
+ sudo rpm -iv couchbase-release-1.0-2-x86_64.rpm
+
+- Install couchbase libraries dependencies
+ sudo yum install libcouchbase-devel gcc gcc-c++ python-devel python-pip
+
+- If pip not install
+ curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
+ python get-pip.py
+
+- Install python couchbase
+ sudo pip install couchbase
+
+- Checkpint
+ pip -V
+
+## Instalacion Node
+
+- Install epel repos
+sudo yum install epel-release
+
+ - If not work
+wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+sudo rpm -Uvh epel-release-latest-7*.rpm
+
+- Install node
+yum install nodejs npm --enablerepo=epel
+
+- Check point
+node -v
